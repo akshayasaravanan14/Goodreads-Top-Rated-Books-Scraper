@@ -38,30 +38,6 @@ install.packages("dplyr")
   - Author names using the CSS selector `.authorName span`.
 - The extracted data is stored in a data frame and then exported to a CSV file.
 
-### Script Overview
-
-```r
-library(rvest)
-library(dplyr)
-
-# Define the URL of the Goodreads list
-link <- "https://www.goodreads.com/list/show/10198.Books_With_a_Goodreads_Average_Rating_of_4_5_and_above_and_With_At_Least_100_Ratings"
-
-# Read the webpage's HTML content
-web <- read_html(link)
-
-# Extract book titles
-Name <- web %>% html_nodes(".bookTitle span") %>% html_text()
-
-# Extract author names
-Author <- web %>% html_nodes(".authorName span") %>% html_text()
-
-# Combine the extracted data into a data frame
-Booksrating <- data.frame(Name, Author)
-
-# Save the data to a CSV file
-write.csv(Booksrating, "Top Books.csv")
-```
 
 ## Output
 
